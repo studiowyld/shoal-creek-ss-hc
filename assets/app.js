@@ -97,3 +97,7 @@ const q=new URLSearchParams(location.search).get('s'); if(q!==null){ requestAnim
   document.documentElement.style.touchAction='none';
   window.__step=()=>cur;
 })();
+// hide F11 note when fullscreen
+(function(){const n=document.getElementById('fsnote');if(!n)return;
+ const u=()=>{n.style.display=(document.fullscreenElement||Math.abs(innerHeight-screen.height)<2)?'none':'';};
+ addEventListener('resize',u);document.addEventListener('fullscreenchange',u);u();})();
