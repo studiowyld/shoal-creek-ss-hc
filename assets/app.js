@@ -1,5 +1,5 @@
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-const N = 26; // steps 0..25
+const N = 27; // steps 0..26
 const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const stage = document.getElementById('stage');
 function fit(){ const s=Math.min(innerWidth/1920, innerHeight/1080); stage.style.transform=`scale(${s})`; }
@@ -35,24 +35,24 @@ tl.set('#s-title .it',{marginTop:-110},0);
 const sh=document.getElementById('s-shift');
 const ml=sh.querySelectorAll('.ml'),ms=sh.querySelectorAll('.ms'),sw=sh.querySelector('.sweep');
 gsap.set(ms,{autoAlpha:0,y:60,rotationX:-80,filter:'blur(10px)'}); gsap.set(sh.querySelector('.ws'),{'--u':0});
-tl.to(sh.querySelector('.kicker'),{autoAlpha:0,duration:.3},T(4));
+tl.to(sh.querySelector('.kicker'),{autoAlpha:0,duration:.3},T(6));
 // learn lifts and glows
-tl.to(ml,{y:-26,color:'#FFB81C',textShadow:'0 0 28px rgba(255,184,28,.8)',duration:.15,stagger:.02},T(4));
+tl.to(ml,{y:-26,color:'#FFB81C',textShadow:'0 0 28px rgba(255,184,28,.8)',duration:.15,stagger:.02},T(6));
 // gold sweep passes through
-tl.fromTo(sw,{left:'-40%',opacity:0},{left:'110%',opacity:1,duration:.4,ease:'power1.inOut'},T(4)+.1);
-tl.to(sw,{opacity:0,duration:.1},T(4)+.45);
+tl.fromTo(sw,{left:'-40%',opacity:0},{left:'110%',opacity:1,duration:.4,ease:'power1.inOut'},T(6)+.1);
+tl.to(sw,{opacity:0,duration:.1},T(6)+.45);
 // learn letters float up and dissolve into light
-tl.to(ml,{y:-140,autoAlpha:0,scale:1.3,filter:'blur(12px)',duration:.25,stagger:.03,ease:'power2.in'},T(4)+.15);
+tl.to(ml,{y:-140,autoAlpha:0,scale:1.3,filter:'blur(12px)',duration:.25,stagger:.03,ease:'power2.in'},T(6)+.15);
 // share letters gather and settle
-tl.to(ms,{autoAlpha:1,y:0,rotationX:0,filter:'blur(0px)',color:'#3B7893',duration:.25,stagger:.03,ease:'back.out(1.6)'},T(4)+.3);
-tl.fromTo(ms,{textShadow:'0 0 30px rgba(255,184,28,.9)'},{textShadow:'0 0 0px rgba(255,184,28,0)',duration:.15,stagger:.03},T(4)+.45);
-tl.fromTo(sh.querySelector('.ws'),{'--u':0},{'--u':1,duration:.15},T(4)+.62);
+tl.to(ms,{autoAlpha:1,y:0,rotationX:0,filter:'blur(0px)',color:'#3B7893',duration:.25,stagger:.03,ease:'back.out(1.6)'},T(6)+.3);
+tl.fromTo(ms,{textShadow:'0 0 30px rgba(255,184,28,.9)'},{textShadow:'0 0 0px rgba(255,184,28,0)',duration:.15,stagger:.03},T(6)+.45);
+tl.fromTo(sh.querySelector('.ws'),{'--u':0},{'--u':1,duration:.15},T(6)+.62);
 // cornerstone drops in
-tl.fromTo('#s-corner .stone',{y:-500,rotation:-8},{y:0,rotation:0,ease:'bounce.out',duration:.7},T(12));
+tl.fromTo('#s-corner .stone',{y:-500,rotation:-8},{y:0,rotation:0,ease:'bounce.out',duration:.7},T(13));
 // path line grows with nodes
-tl.to('#s-path .pathLine line',{strokeDashoffset:0,ease:'none',duration:4.6},T(16));
+tl.to('#s-path .pathLine line',{strokeDashoffset:0,ease:'none',duration:4.6},T(17));
 // close: underline draws
-tl.fromTo('#s-close .gold-u',{'--u':0},{'--u':1,duration:.3},T(25)+.4);
+tl.fromTo('#s-close .gold-u',{'--u':0},{'--u':1,duration:.3},T(26)+.4);
 
 const nodes=[...document.querySelectorAll('.node')];
 const bar=document.querySelector('#progress i');
