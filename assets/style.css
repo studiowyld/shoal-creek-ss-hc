@@ -6,7 +6,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:#fff;font-family:"Source Sans 3",system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
 body{overflow-x:hidden}
-#spacer{height:2500vh}
+#spacer{height:2600vh}
 #bg{position:fixed;inset:0;background:#fff}
 #viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
 #stage{width:1920px;height:1080px;position:relative;flex:none;transform-origin:center}

@@ -1,5 +1,5 @@
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-const N = 25; // steps 0..24
+const N = 26; // steps 0..25
 const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const stage = document.getElementById('stage');
 function fit(){ const s=Math.min(innerWidth/1920, innerHeight/1080); stage.style.transform=`scale(${s})`; }
@@ -52,7 +52,7 @@ tl.fromTo('#s-corner .stone',{y:-500,rotation:-8},{y:0,rotation:0,ease:'bounce.o
 // path line grows with nodes
 tl.to('#s-path .pathLine line',{strokeDashoffset:0,ease:'none',duration:4.6},T(16));
 // close: underline draws
-tl.fromTo('#s-close .gold-u',{'--u':0},{'--u':1,duration:.3},T(24)+.4);
+tl.fromTo('#s-close .gold-u',{'--u':0},{'--u':1,duration:.3},T(25)+.4);
 
 const nodes=[...document.querySelectorAll('.node')];
 const bar=document.querySelector('#progress i');
@@ -74,7 +74,7 @@ addEventListener('keydown',e=>{
   if(['ArrowRight','ArrowDown','PageDown',' ','Enter'].includes(k)){e.preventDefault();go(cur+1);}
   else if(['ArrowLeft','ArrowUp','PageUp','Backspace'].includes(k)){e.preventDefault();go(cur-1);}
   else if(k==='Home'){e.preventDefault();go(0);} else if(k==='End'){e.preventDefault();go(N-1);}
-  else if(k==='f'||k==='F'){ document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen().catch(()=>{}); }
+  else if(k==='f'||k==='F'){ window.toggleFs(); }
   document.getElementById('hint')?.style.setProperty('opacity','0');
 });
 // intro: wipe the real logo in (mask only)
