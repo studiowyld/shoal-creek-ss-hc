@@ -33,12 +33,20 @@ tl.to('#s-title .logoWrap',{scale:.62,y:-30,duration:D},T(1));
 tl.set('#s-title .it',{marginTop:-110},0);
 // learn -> share morph
 const sh=document.getElementById('s-shift');
-gsap.set(sh.querySelector('.share'),{autoAlpha:0});
+const ml=sh.querySelectorAll('.ml'),ms=sh.querySelectorAll('.ms'),sw=sh.querySelector('.sweep');
+gsap.set(ms,{autoAlpha:0,y:60,rotationX:-80,filter:'blur(10px)'}); gsap.set(sh.querySelector('.ws'),{'--u':0});
 tl.to(sh.querySelector('.kicker'),{autoAlpha:0,duration:.3},T(4));
-tl.to(sh.querySelector('.strike'),{scaleX:1,duration:.35},T(4));
-tl.to(sh.querySelector('.swap h2:first-child'),{y:-170,opacity:.3,scale:.55,duration:.4},T(4)+.3);
-tl.fromTo(sh.querySelector('.share'),{autoAlpha:0,y:120},{autoAlpha:1,y:40,duration:.4},T(4)+.3);
-tl.fromTo(sh.querySelector('.share .gold-u'),{'--u':0},{'--u':1,duration:.25},T(4)+.45);
+// learn lifts and glows
+tl.to(ml,{y:-26,color:'#FFB81C',textShadow:'0 0 28px rgba(255,184,28,.8)',duration:.15,stagger:.02},T(4));
+// gold sweep passes through
+tl.fromTo(sw,{left:'-40%',opacity:0},{left:'110%',opacity:1,duration:.4,ease:'power1.inOut'},T(4)+.1);
+tl.to(sw,{opacity:0,duration:.1},T(4)+.45);
+// learn letters float up and dissolve into light
+tl.to(ml,{y:-140,autoAlpha:0,scale:1.3,filter:'blur(12px)',duration:.25,stagger:.03,ease:'power2.in'},T(4)+.15);
+// share letters gather and settle
+tl.to(ms,{autoAlpha:1,y:0,rotationX:0,filter:'blur(0px)',color:'#3B7893',duration:.25,stagger:.03,ease:'back.out(1.6)'},T(4)+.3);
+tl.fromTo(ms,{textShadow:'0 0 30px rgba(255,184,28,.9)'},{textShadow:'0 0 0px rgba(255,184,28,0)',duration:.15,stagger:.03},T(4)+.45);
+tl.fromTo(sh.querySelector('.ws'),{'--u':0},{'--u':1,duration:.15},T(4)+.62);
 // cornerstone drops in
 tl.fromTo('#s-corner .stone',{y:-500,rotation:-8},{y:0,rotation:0,ease:'bounce.out',duration:.7},T(12));
 // path line grows with nodes
