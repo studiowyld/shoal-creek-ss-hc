@@ -67,7 +67,7 @@ addEventListener('keydown',e=>{
   else if(['ArrowLeft','ArrowUp','PageUp','Backspace'].includes(k)){e.preventDefault();go(cur-1);}
   else if(k==='Home'){e.preventDefault();go(0);} else if(k==='End'){e.preventDefault();go(N-1);}
   else if(k==='f'||k==='F'){ document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen().catch(()=>{}); }
-  document.getElementById('hint').style.opacity=0;
+  document.getElementById('hint')?.style.setProperty('opacity','0');
 });
 // intro: wipe the real logo in (mask only)
 if(!RM) gsap.fromTo('#logo',{clipPath:'inset(0 100% 0 0)',opacity:0},{clipPath:'inset(0 0% 0 0)',opacity:1,duration:1.8,ease:'power3.inOut',delay:.3});
@@ -97,7 +97,3 @@ const q=new URLSearchParams(location.search).get('s'); if(q!==null){ requestAnim
   document.documentElement.style.touchAction='none';
   window.__step=()=>cur;
 })();
-// hide F11 note when fullscreen
-(function(){const n=document.getElementById('fsnote');if(!n)return;
- const u=()=>{n.style.display=(document.fullscreenElement||Math.abs(innerHeight-screen.height)<2)?'none':'';};
- addEventListener('resize',u);document.addEventListener('fullscreenchange',u);u();})();
